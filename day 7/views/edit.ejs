@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit</title>
+</head>
+<body>
+        <form action="/updateData" method="post" enctype="multipart/form-data">
+            <input type="text" hidden name="id" value="<%=singleData.id%>">
+            <input type="text" placeholder="enter your first name" name="first" value="<%=singleData.first%>">
+            <input type="text" placeholder="enter your last name " name="last" value="<%=singleData.last%>">
+            <input type="email" placeholder="Enter your Email" name="email" value="<%=singleData.email%>">
+            <input type="password" placeholder="Enter your password" name="password" value="<%=singleData.password%>">
+            <img src="<%=singleData.img%>" alt="" width=""> 
+            <input type="file" placeholder="Enter your file" name="img">
+            <input type="submit" value="update">
+            </form>
+
+</body>
+</html>
