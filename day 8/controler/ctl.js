@@ -1,6 +1,7 @@
 const path = require("path")
 const schema = require('../model/firstschema')
 const fs = require("fs")
+const passport = require("passport")
 
 
 module.exports.loginData = (req,res)=>{
@@ -60,3 +61,43 @@ module.exports.updatedata=async(req,res)=>{
    
 }
 
+module.exports.profile=(req,res)=>{
+ 
+    res.render("profile")
+}
+
+module.exports.changepass=(req,res)=>{
+    res.render("changepass")
+}
+module.exports.changepassword= async(req,res)=>{
+
+  let admin= req.user;
+
+
+  if(admin.password==req.body.old)
+  {
+        if(admin.password!=req.body.new)
+        {
+            if(req.body.confirm==req.body.new)
+            {
+                await schema.findByIdAndUpdate(admin.id,{password:req.body.confirm}).then(()=>{
+                    res.redirect("/")
+                })
+            }
+            else
+            {
+                res.write("<h1>confirm is incorrrect</h1>")    
+            }
+        }
+        else
+        {
+            res.write("<h1>new is incorrrect</h1>")         
+        }
+  }
+  else
+  {
+    res.write("<h1>old is incorrrect</h1>")
+  }
+   
+    
+}

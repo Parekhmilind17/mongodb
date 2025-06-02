@@ -1,5 +1,5 @@
 const express = require("express");
-const port = 1008;
+const port = 2006;
 
 const app = express();
 const db = require("./config/db")
@@ -36,6 +36,10 @@ app.use(passport.session());
 
 
 app.use('/', require('./Routes/routes'))
+app.use('/category', require('./Routes/category'))
+app.use("/subcategory",require('./Routes/subcategory'))
+app.use("/product",require('./Routes/product')) 
+
 
 app.listen(port,(err)=>{
     err?console.log(err):console.log("server started on the port :: " + port);
